@@ -1,0 +1,13 @@
+[package]
+name = "lithium-cache"
+version = "1.0.0"
+edition = "2024"
+authors = ["TheByteSlayer"]
+description = "A high-performance, lightweight Caching System using the Lithium API Service."
+repository = "https://github.com/thebyteslayer/lithium-cache"
+
+[dependencies]
+
+[[bin]]
+name = "lithium-cache-service"
+path = "src/service.rs"
