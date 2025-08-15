@@ -1,0 +1,27 @@
+services:
+  lithium-cache:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: lithium-cache-service
+    ports:
+      - "1227:1227"
+    volumes:
+      - lithium-data:/app
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "nc -z localhost 1227 || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - lithium-network
+
+networks:
+  lithium-network:
+    driver: bridge
+
+volumes:
+  lithium-data:
+    driver: local

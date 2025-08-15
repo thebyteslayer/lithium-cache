@@ -1,3 +1,4 @@
+.git/
 target/
 logs/
 Cargo.lock
@@ -5,3 +6,8 @@ lithium.json
 token.json
 example.lithium.json
 example.token.json
+README.md
+docker-compose.yml
+Dockerfile
+.gitignore
+.dockerignore

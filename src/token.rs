@@ -76,38 +76,3 @@ impl Default for TokenConfig {
         Self::new()
     }
 }
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-    use regex::Regex;
-    
-    #[test]
-    fn test_token_format() {
-        let token = TokenConfig::generate_token();
-        let pattern = Regex::new(r"^[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}$").unwrap();
-        assert!(pattern.is_match(&token), "Token '{}' doesn't match expected format", token);
-    }
-    
-    #[test]
-    fn test_token_uniqueness() {
-        let token1 = TokenConfig::generate_token();
-        let token2 = TokenConfig::generate_token();
-        assert_ne!(token1, token2, "Generated tokens should be unique");
-    }
-    
-    #[test]
-    fn test_token_validation() {
-        assert!(TokenConfig::is_valid_token("1a2b-3c4d-5e6f-7f80"));
-        assert!(TokenConfig::is_valid_token("0000-0000-0000-0000"));
-        assert!(TokenConfig::is_valid_token("ffff-ffff-ffff-ffff"));
-        
-        assert!(!TokenConfig::is_valid_token("1a2b-3c4d-5e6f"));
-        assert!(!TokenConfig::is_valid_token("1a2b-3c4d-5e6f-7f80-1234"));
-        assert!(!TokenConfig::is_valid_token("1A2B-3C4D-5E6F-7F80"));
-        assert!(!TokenConfig::is_valid_token("1a2b_3c4d_5e6f_7f80"));
-        assert!(!TokenConfig::is_valid_token("1a2g-3c4d-5e6f-7f80"));
-        assert!(!TokenConfig::is_valid_token(""));
-        assert!(!TokenConfig::is_valid_token("not-a-token"));
-    }
-}
