@@ -1,0 +1,13 @@
+.git/
+.github/
+.vscode/
+build/
+lithium-cache/
+.dockerignore
+.gitignore
+.gitmodules
+.gitorderfile
+.structure
+docker-compose.local.yml
+Dockerfile
+README.md

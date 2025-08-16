@@ -1,0 +1,3 @@
+[submodule "lithium-api"]
+	path = lithium-api
+	url = https://github.com/thebyteslayer/lithium-api.git
